@@ -1,0 +1,30 @@
+# Data lives on OneDrive, never in git.
+# Keep only the empty folder structure (.gitkeep files).
+data/**
+!data/**/
+!data/**/.gitkeep
+
+# Safety net: geodata files anywhere in the repo
+*.tif
+*.tiff
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.geojson
+*.parquet
+*.nc
+*.zip
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
