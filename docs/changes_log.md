@@ -200,6 +200,28 @@ Each entry: **change → why → result**. Numbers are from the runs on 30 Oct 2
 
 ---
 
+## H. Layer contribution (09)
+
+### H1. Baseline fixed: 300 m radius features, k = 6 (decided 1 Nov 2026)
+
+### H2. Drop one indicator at a time
+- **Method:** re-cluster without each indicator (k = 6, same seed), compare with the full clustering by ARI on all cells and on built-up cells only (full clusters 2–5), because forest and open land are 72 % of cells and dominate ARI. Seed noise: ARI 0.994 (all), 0.983 (built-up).
+- **Result:**
+
+| dropped layer | ARI all | ARI built-up | main effect |
+|---|---|---|---|
+| greenery | 0.45 | 0.47 | forest and open land merge |
+| people | 0.85 | 0.49 | non-residential merges with urban residential |
+| buildings (height) | 0.89 | 0.49 | villages partly join open land |
+| imperviousness | 0.91 | 0.48 | moderate reshuffle, no cluster lost |
+| function (POI) | 0.93 | 0.70 | the centre dissolves |
+| streets | 0.93 | 0.71 | smallest change |
+
+- **Conclusion:** inside the built-up area the four form layers (people, buildings, imperviousness, greenery) matter about equally; none is redundant. POI is the only layer that defines the centre. Streets add the least new information.
+- **Over k:** 6 → 5 splits sparse residential/villages between urban residential and open land; 6 → 7 splits urban residential and the centre (ARI 0.86 both). The sparse residential cluster is the least stable (transition zone).
+
+---
+
 ## Open questions
-1. Make the radius version the new baseline? 300 m is robust (F1, G2). Still to decide: k = 4 (most stable on MOL) vs k = 6 (residential split).
+1. ~~Radius version as baseline, k~~ → decided: 300 m, k = 6 (H1).
 2. For Špela: Urban Atlas → POI swap, indicator choice, k = 6 map; ask for the UHI layer.

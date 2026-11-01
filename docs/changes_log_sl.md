@@ -200,6 +200,28 @@ Vsak vnos: **sprememba → zakaj → rezultat**. Številke so iz zagonov 30. 10.
 
 ---
 
+## H. Prispevek slojev (09)
+
+### H1. Osnovni model določen: kazalniki v radiju 300 m, k = 6 (odločeno 1. 11. 2026)
+
+### H2. Odstranjevanje enega kazalnika naenkrat
+- **Metoda:** ponovno razvrščanje brez vsakega kazalnika (k = 6, isto seme), primerjava s polnim razvrščanjem z ARI na vseh celicah in samo na pozidanih celicah (polne gruče 2–5), ker gozd in odprt prostor predstavljata 72 % celic in prevladujeta v ARI. Šum semena: ARI 0,994 (vse), 0,983 (pozidano).
+- **Rezultat:**
+
+| odstranjen sloj | ARI vse | ARI pozidano | glavni učinek |
+|---|---|---|---|
+| zelenje | 0,45 | 0,47 | gozd in odprt prostor se združita |
+| prebivalci | 0,85 | 0,49 | nestanovanjsko se združi z mestnim stanovanjskim |
+| stavbe (višina) | 0,89 | 0,49 | vasi se delno pridružijo odprtemu prostoru |
+| neprepustnost | 0,91 | 0,48 | zmerno premešanje, nobena gruča ne izgine |
+| funkcija (POI) | 0,93 | 0,70 | center razpade |
+| ulice | 0,93 | 0,71 | najmanjša sprememba |
+
+- **Sklep:** znotraj pozidanega območja so štirje sloji oblike (prebivalci, stavbe, neprepustnost, zelenje) približno enako pomembni; noben ni odveč. POI je edini sloj, ki določa center. Ulice prinesejo najmanj nove informacije.
+- **Glede k:** 6 → 5 razdeli redko poseljeno/vasi med mestno stanovanjsko in odprt prostor; 6 → 7 razdeli mestno stanovanjsko in center (ARI 0,86 v obeh primerih). Redko poseljena gruča je najmanj stabilna (prehodno območje).
+
+---
+
 ## Odprta vprašanja
-1. Naj radijska različica postane novi osnovni model? 300 m je robusten (F1, G2). Še odločiti: k = 4 (najbolj stabilen na MOL) ali k = 6 (delitev stanovanjskih območij).
+1. ~~Radijska različica kot osnovni model, k~~ → odločeno: 300 m, k = 6 (H1).
 2. Za Špelo: zamenjava Urban Atlas → POI, izbira kazalnikov, karta k = 6; prositi za sloj UHI.
