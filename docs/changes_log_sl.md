@@ -173,6 +173,33 @@ Vsak vnos: **sprememba → zakaj → rezultat**. Številke so iz zagonov 30. 10.
 
 ---
 
+## G. Podatki o stavbah za celotno MOL (02a, ponovni zagon 02 in 06–08)
+
+### G1. EUBUCCO, obrezan na MOL, namesto Špelinega izvlečka za naselje
+- **Sprememba:** nov zvezek `02a_eubucco_mol_extract`: datoteka EUBUCCO v0.2 za zahodno Slovenijo (`SI04.gpkg`, 524.000 stavb, prenesena 1. 11. 2026), obrezana na mejo MOL (`intersects`, stavbe na meji ostanejo cele) → `data/processed/eubucco_mol.gpkg`, stolpci preimenovani v Špeline kratke nazive. 02 zdaj bere to datoteko.
+- **Preverjanje:** 82.495 stavb (+7.435); 75.060 od Špelinih 75.061 je vključenih s 100 % enakimi atributi (manjkajoča leži 4 m zunaj MOL). Na starem območju ima 99,8 % celic enake kazalnike stavb.
+- **Rezultat:** celice s podatki o stavbah 16.369 → **27.483** od 27.505; poseljene celice brez podatkov o stavbah 885 → 3 (15 prebivalcev).
+- **Opozorilo:** zunaj naselja so tlorisi pogosteje iz Microsofta (13 % proti 8 %), višine pa pogosteje ocenjene (29 % proti 20 %).
+- Preverjeni ostali sloji: vsi rastri (neprepustnost, NDVI, višina krošenj) pokrivajo 100 % MOL; POI in ulice so iz izvlečka OSM za vso Slovenijo.
+- Stari izhodi shranjeni kot `*_settlement.csv` v `data/processed/`.
+
+### G2. Ponovni zagon 06–08 na 27.465 celicah (prej 16.351)
+
+| | prej (naselje) | zdaj (MOL) |
+|---|---|---|
+| razvrščene celice | 16.351 | 27.465 |
+| ARI med semeni k = 6, v celici / 300 m | 0,95 / 0,86 | 0,94 / 0,94 |
+| najbolj stabilen k, v celici / 300 m | 6 / 5 | 9 / **4** |
+| ujemanje s sosedi k = 6, v celici / 300 m | 0,63 / 0,71 | 0,69 / 0,73 |
+| ARI 300 m proti 200 m / 500 m, k = 6 | 0,81 / 0,91 | 0,95 / 0,91 |
+
+- **Istih šest gruč** v obeh različicah: gozd (zdaj tudi gozdnati griči na vzhodu), odprt prostor, dve stanovanjski, center/mešana raba, nestanovanjske površine.
+- **Delitev stanovanjskih območij spremeni pomen** (300 m, k = 6): z dodanimi vasmi vzhodne MOL je zdaj **redko poseljeno / vasi** (7 prebivalcev/ha, 34.000 prebivalcev) proti **mestnemu stanovanjskemu** (53/ha, 204.000), namesto nizke (20/ha) proti visoki gostoti (65/ha). Vsi trije radiji se zdaj ujemajo v tej strukturi.
+- **Številke gruč so se spremenile** (urejene so po povprečni neprepustnosti): v 06 center = 4, nestanovanjsko = 5; v 07 (300 m) nestanovanjsko = 4, center = 5.
+- 300 m ostaja smiseln radij. **Izbira k je spet odprta:** k = 4 (ARI 0,999, ena stanovanjska gruča) ali k = 6 (ARI 0,94, delitev stanovanjskih območij, ločen center).
+
+---
+
 ## Odprta vprašanja
-1. Naj radijska različica postane novi osnovni model? 200/500 m preverjeno (F1): 300 m je robusten. Še odločiti: k = 5 (najbolj stabilen) ali k = 6 (delitev stanovanjskih območij).
-2. Za Špelo: zamenjava Urban Atlas → POI, izbira kazalnikov, karta k = 6; prositi za izvleček EUBUCCO za MOL in sloj UHI.
+1. Naj radijska različica postane novi osnovni model? 300 m je robusten (F1, G2). Še odločiti: k = 4 (najbolj stabilen na MOL) ali k = 6 (delitev stanovanjskih območij).
+2. Za Špelo: zamenjava Urban Atlas → POI, izbira kazalnikov, karta k = 6; prositi za sloj UHI.

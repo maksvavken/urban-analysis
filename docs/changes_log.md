@@ -173,6 +173,33 @@ Each entry: **change → why → result**. Numbers are from the runs on 30 Oct 2
 
 ---
 
+## G. Building data for all of MOL (02a, re-run 02 and 06–08)
+
+### G1. EUBUCCO clipped to MOL instead of Špela's settlement extract
+- **Change:** new notebook `02a_eubucco_mol_extract`: EUBUCCO v0.2 file for western Slovenia (`SI04.gpkg`, 524,000 buildings, downloaded 1 Nov 2026) clipped to the MOL boundary (`intersects`, border buildings kept whole) → `data/processed/eubucco_mol.gpkg`, columns renamed to Špela's short names. 02 now reads this file.
+- **Checks:** 82,495 buildings (+7,435); 75,060 of Špela's 75,061 are included with 100 % identical attributes (the missing one lies 4 m outside MOL). In the old extent, 99.8 % of cells have identical building indicators.
+- **Result:** cells with building data 16,369 → **27,483** of 27,505; populated cells without building data 885 → 3 (15 residents).
+- **Caveat:** outside the settlement, footprints are more often from Microsoft (13 % vs 8 %) and heights more often estimated (29 % vs 20 %).
+- Other layers checked: all rasters (imperviousness, NDVI, canopy height) cover 100 % of MOL; POI and streets come from the Slovenia-wide OSM extract.
+- Old outputs kept as `*_settlement.csv` in `data/processed/`.
+
+### G2. Re-run of 06–08 on 27,465 cells (was 16,351)
+
+| | before (settlement) | now (MOL) |
+|---|---|---|
+| cells clustered | 16,351 | 27,465 |
+| seed ARI k = 6, in cell / 300 m | 0.95 / 0.86 | 0.94 / 0.94 |
+| most seed-stable k, in cell / 300 m | 6 / 5 | 9 / **4** |
+| neighbour agreement k = 6, in cell / 300 m | 0.63 / 0.71 | 0.69 / 0.73 |
+| ARI 300 m vs 200 m / 500 m, k = 6 | 0.81 / 0.91 | 0.95 / 0.91 |
+
+- **Same six clusters** in both versions: forest (now including the forested hills in the east), open land, two residential, centre/mixed, non-residential.
+- **The residential split changes meaning** (300 m, k = 6): with the villages of eastern MOL added, it is now **sparse residential / villages** (7 residents/ha, 34,000 residents) vs **urban residential** (53/ha, 204,000), instead of low-density (20/ha) vs dense (65/ha). All three radii now agree on this structure.
+- **Cluster numbers changed** (they are ordered by mean imperviousness): in 06 centre = 4, non-residential = 5; in 07 (300 m) non-residential = 4, centre = 5.
+- 300 m remains a reasonable radius. **k is open again:** k = 4 (ARI 0.999, one residential cluster) vs k = 6 (ARI 0.94, residential split, separate centre).
+
+---
+
 ## Open questions
-1. Make the radius version the new baseline? 200/500 m checked (F1): 300 m is robust. Still to decide: k = 5 (most stable) vs k = 6 (residential split).
-2. For Špela: Urban Atlas → POI swap, indicator choice, k = 6 map; ask for the EUBUCCO MOL extract and the UHI layer.
+1. Make the radius version the new baseline? 300 m is robust (F1, G2). Still to decide: k = 4 (most stable on MOL) vs k = 6 (residential split).
+2. For Špela: Urban Atlas → POI swap, indicator choice, k = 6 map; ask for the UHI layer.
