@@ -222,6 +222,15 @@ Vsak vnos: **sprememba → zakaj → rezultat**. Številke so iz zagonov 30. 10.
 
 ---
 
+## I. Primerjava z Urban Atlas (10)
+
+- **Sprememba:** Urban Atlas 2021 (funkcionalno urbano območje Ljubljane, `.fgb`, EPSG:3035) prenesen in primerjan z osnovnim modelom (300 m, k = 6) **samo kot referenca, nikoli kot vhod**. Prevladujoč razred UA na celico, 27 razredov združenih v 10 skupin.
+- **Zakaj:** preveriti, kaj imajo gruče skupnega z uradno karto rabe prostora in ali z opustitvijo UA kot vhoda (→ OSM POI) kaj izgubimo.
+- **Rezultat:** obrezan UA pokriva točno površino MOL (27.499 ha). ARI 0,70 na vseh celicah, a le **0,23 na pozidanih gručah** (2–5). Gozd 96 % UA gozd, odprt prostor 81 % UA kmetijske površine, mestno stanovanjsko 75 % UA gosto/srednje gosto pozidano, nestanovanjsko 73 % UA industrija/trgovina. Center je le 16 % UA strnjeno pozidano in 49 % UA »industrija, trgovina, javno« (UA nima tipa po funkciji); vasi so 36 % UA kmetijske površine.
+- **Sklep:** gruče iz izmerjenih kazalnikov dobijo strukturo pokrovnosti UA in dodajo mešani center ter vzorec vasi → podpira zamenjavo UA → POI.
+
+---
+
 ## Odprta vprašanja
 1. ~~Radijska različica kot osnovni model, k~~ → odločeno: 300 m, k = 6 (H1).
 2. Za Špelo: zamenjava Urban Atlas → POI, izbira kazalnikov, karta k = 6; prositi za sloj UHI.

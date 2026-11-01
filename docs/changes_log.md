@@ -222,6 +222,15 @@ Each entry: **change → why → result**. Numbers are from the runs on 30 Oct 2
 
 ---
 
+## I. Urban Atlas comparison (10)
+
+- **Change:** Urban Atlas 2021 (Ljubljana FUA, `.fgb`, EPSG:3035) downloaded and compared with the baseline (300 m, k = 6) as a **reference only, never an input**. Dominant UA class per cell, 27 classes grouped into 10.
+- **Why:** check what the clusters share with an official land-use map, and whether dropping UA as an input (→ OSM POI) loses anything.
+- **Result:** clipped UA covers exactly the MOL area (27,499 ha). ARI 0.70 on all cells, but only **0.23 on built-up clusters** (2–5). Forest 96 % UA forest, open land 81 % UA farmland, urban residential 75 % UA dense/medium fabric, non-residential 73 % UA industrial/commercial. The centre is only 16 % UA continuous fabric and 49 % UA "industrial, commercial, public" (UA has no function type); villages are 36 % UA farmland.
+- **Conclusion:** the clusters recover UA's land-cover structure from measured indicators and add the mixed-use centre and the village pattern → supports the UA → POI swap.
+
+---
+
 ## Open questions
 1. ~~Radius version as baseline, k~~ → decided: 300 m, k = 6 (H1).
 2. For Špela: Urban Atlas → POI swap, indicator choice, k = 6 map; ask for the UHI layer.
