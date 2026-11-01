@@ -148,7 +148,31 @@ Vsak vnos: **sprememba → zakaj → rezultat**. Številke so iz zagonov 30. 10.
 
 ---
 
+## F. Občutljivost na radij (08)
+
+### F1. Enak postopek z 200 m in 500 m
+- **Sprememba:** podatki ostanejo enaki; 07 ponovljen z radijem 200 m (okno 13 celic) in 500 m (81 celic), za primerjavo še različica v celici. Izhod: `radius_sensitivity.csv`, `08_scores_by_radius.png`, `08_maps_by_radius.png`.
+- **Rezultat:**
+
+| | v celici | 200 m | 300 m | 500 m |
+|---|---|---|---|---|
+| ujemanje s sosedi, k = 5 | 0,63 | 0,74 | 0,75 | 0,75 |
+| ujemanje s sosedi, k = 6 | 0,63 | 0,68 | 0,71 | 0,73 |
+| ARI med semeni, k = 5 | 0,77 | **0,999** | **0,997** | 0,89 |
+| ARI med semeni, k = 6 | 0,95 | 0,92 | 0,86 | 0,89 |
+| najbolj stabilen k | 6 | 5 | 5 | 8 |
+| ARI glede na 300 m, k = 5 | 0,75 | 0,93 | – | 0,92 |
+| ARI glede na 300 m, k = 6 | 0,81 | 0,81 | – | 0,91 |
+
+- **Kaj to pomeni:**
+  - Vsak radij odstrani večino vzorca »sol in poper«; nad 300 m je izboljšanje majhno (0,71 → 0,73 pri k = 6, pri k = 5 nič).
+  - Pri k = 5 radij skoraj ni pomemben (ARI 0,88–0,93 med vsemi radiji).
+  - Pri k = 6 dasta 300 m in 500 m enako strukturo: stanovanjsko nizke gostote (20–23 prebivalcev/ha) proti gostemu mestnemu stanovanjskemu (65–72 prebivalcev/ha). Gruča centra se z radijem krči (458 → 270 celic).
+  - Pri 200 m je delitev pri k = 6 drugačna: majhna redko poseljena obrobna gruča (7 prebivalcev/ha, 26.000 prebivalcev) proti eni veliki stanovanjski gruči (197.000) in večji center (617 celic). 200 m je premajhna soseska, da bi ločila oba stanovanjska tipa.
+- **Odločitev (predlog):** obdržati radij **300 m**: rezultati se ujemajo s 500 m, k = 5 je zelo stabilen, center ostane strnjen in se ne zgladi. Izbira k (5 ali 6) ostaja odprta.
+
+---
+
 ## Odprta vprašanja
-1. Naj radijska različica postane novi osnovni model? Če da: ponovno izbrati k (5 ali 6), preveriti občutljivost za 200 m / 500 m.
+1. Naj radijska različica postane novi osnovni model? 200/500 m preverjeno (F1): 300 m je robusten. Še odločiti: k = 5 (najbolj stabilen) ali k = 6 (delitev stanovanjskih območij).
 2. Za Špelo: zamenjava Urban Atlas → POI, izbira kazalnikov, karta k = 6; prositi za izvleček EUBUCCO za MOL in sloj UHI.
-3. Združiti vejo `baseline-clustering` v main.

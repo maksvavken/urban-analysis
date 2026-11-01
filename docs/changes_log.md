@@ -148,7 +148,31 @@ Each entry: **change → why → result**. Numbers are from the runs on 30 Oct 2
 
 ---
 
+## F. Radius sensitivity (08)
+
+### F1. Same pipeline with 200 m and 500 m
+- **Change:** none to the data; 07 repeated with radius 200 m (13-cell window) and 500 m (81 cells), plus the in-cell version as reference. Output: `radius_sensitivity.csv`, `08_scores_by_radius.png`, `08_maps_by_radius.png`.
+- **Result:**
+
+| | in cell | 200 m | 300 m | 500 m |
+|---|---|---|---|---|
+| neighbour agreement, k = 5 | 0.63 | 0.74 | 0.75 | 0.75 |
+| neighbour agreement, k = 6 | 0.63 | 0.68 | 0.71 | 0.73 |
+| seed ARI, k = 5 | 0.77 | **0.999** | **0.997** | 0.89 |
+| seed ARI, k = 6 | 0.95 | 0.92 | 0.86 | 0.89 |
+| most seed-stable k | 6 | 5 | 5 | 8 |
+| ARI vs 300 m, k = 5 | 0.75 | 0.93 | – | 0.92 |
+| ARI vs 300 m, k = 6 | 0.81 | 0.81 | – | 0.91 |
+
+- **What it means:**
+  - Any radius removes most of the speckle; beyond 300 m the gain is small (0.71 → 0.73 at k = 6, none at k = 5).
+  - At k = 5 the radius hardly matters (ARI 0.88–0.93 between all radii).
+  - At k = 6, 300 m and 500 m give the same structure: low-density residential (20–23 residents/ha) vs dense urban residential (65–72 residents/ha). The centre cluster shrinks with the radius (458 → 270 cells).
+  - At 200 m the k = 6 split is different: a small sparse fringe cluster (7 residents/ha, 26,000 residents) vs one big residential cluster (197,000), and a larger centre (617 cells). 200 m is too small a neighbourhood to separate the two residential types.
+- **Decision (proposed):** keep **300 m** as the radius: the results agree with 500 m, k = 5 is very stable, and the centre stays compact without being smoothed away. k (5 vs 6) is still open.
+
+---
+
 ## Open questions
-1. Make the radius version the new baseline? If yes: re-choose k (5 vs 6), check 200 m / 500 m sensitivity.
+1. Make the radius version the new baseline? 200/500 m checked (F1): 300 m is robust. Still to decide: k = 5 (most stable) vs k = 6 (residential split).
 2. For Špela: Urban Atlas → POI swap, indicator choice, k = 6 map; ask for the EUBUCCO MOL extract and the UHI layer.
-3. Merge branch `baseline-clustering` into main.
